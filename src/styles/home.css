@@ -1,0 +1,16 @@
+﻿@font-face {
+    font-family: "kuto";
+    src: url(../assets/PaperKuto-Regular.ttf);
+}
+body{
+    
+    font-family: "kuto";
+    background-color: #FFF0DC;
+}
+.nav_items{
+    list-style-type: none;
+    color: #131010;
+}
+.nav_box{
+    width: ;
+}
