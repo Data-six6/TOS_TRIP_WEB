@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "PaperKuto";
+  src: url("../../assets/PaperKuto-Regular.ttf");
+}
+
+.auth-page {
+  min-height: calc(100vh - 7rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.auth-card {
+  width: min(100%, 72rem);
+  min-height: 42rem;
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  overflow: hidden;
+  border: 1px solid rgba(48, 35, 22, 0.14);
+  background: #f7ecd8;
+  box-shadow: 0 18px 50px rgba(52, 37, 19, 0.12);
+}
+
+.auth-panel {
+  position: relative;
+}
+
+.auth-panel--form {
+  background: #928a80;
+  padding: 1.55rem 1.75rem 2rem;
+  color: #fff;
+}
+
+.auth-panel--visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2.4rem 1.5rem 2rem;
+  background: #f8ead1;
+}
+
+.auth-close {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 2.2rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.65rem;
+}
+
+.auth-avatar {
+  width: 4.8rem;
+  height: 4.8rem;
+  object-fit: contain;
+}
+
+.auth-header h1 {
+  margin: 1rem 0 0;
+  color: #fff;
+  font-family: "PaperKuto", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+}
+
+.auth-form {
+  margin-top: 3rem;
+}
+
+.auth-field {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.auth-field span {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.auth-field input {
+  width: 100%;
+  height: 2.3rem;
+  border: 0;
+  border-radius: 0.35rem;
+  padding: 0 0.85rem;
+  background: #fff;
+  color: #1b1b1b;
+}
+
+.auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2.7rem;
+}
+
+.auth-submit {
+  min-width: 6.5rem;
+  height: 2.35rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: #000;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.auth-switch {
+  color: #fff;
+  font-size: 0.98rem;
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.3rem;
+}
+
+.auth-brand__logo {
+  width: 12rem;
+  height: auto;
+}
+
+.auth-brand p {
+  margin: 0.4rem 0 0;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.auth-map-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.auth-map {
+  width: min(100%, 24rem);
+  height: auto;
+}
+
+.auth-pin {
+  position: absolute;
+  top: -1.45rem;
+  right: 1rem;
+  width: 1.8rem;
+  height: auto;
+}
+
+@media (max-width: 860px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-panel--visual {
+    padding-top: 1.5rem;
+  }
+
+  .auth-map-wrap {
+    margin-top: 1.5rem;
+  }
+}

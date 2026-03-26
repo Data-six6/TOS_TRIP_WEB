@@ -1,0 +1,180 @@
+@font-face {
+  font-family: "PaperKuto";
+  src: url("../../assets/PaperKuto-Regular.ttf");
+}
+
+.navbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.9rem 1.25rem 0;
+}
+
+.navbar {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.navbar--tos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.7rem 0.2rem;
+}
+
+.tos-brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tos-brand__logo {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.nav-panel--tos {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-links--tos {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.8rem, 2vw, 2.4rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link--tos {
+  position: relative;
+  padding: 0.2rem 0.1rem 0.45rem;
+  color: #151515;
+  font-family: "PaperKuto", "Trebuchet MS", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.45rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.nav-link--tos::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.18rem;
+  border-radius: 999px;
+  background: #111;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.nav-link--tos:hover::after,
+.nav-link--tos.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.5rem;
+  border: 0;
+  background: transparent;
+}
+
+.nav-toggle--tos {
+  margin-left: auto;
+}
+
+.nav-toggle span {
+  width: 1.45rem;
+  height: 2px;
+  border-radius: 99px;
+  background: #3d2a18;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: #111;
+}
+
+.profile-icon {
+  position: relative;
+  display: block;
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.profile-icon__head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+.profile-icon__body {
+  position: absolute;
+  left: 50%;
+  bottom: 0.05rem;
+  width: 1.5rem;
+  height: 0.95rem;
+  border-radius: 0.9rem 0.9rem 0.35rem 0.35rem;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 820px) {
+  .navbar-wrap {
+    padding: 0.85rem 0.85rem 0;
+  }
+
+  .navbar--tos {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-panel--tos {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 0.5rem;
+  }
+
+  .nav-panel--tos.is-open {
+    display: flex;
+  }
+
+  .nav-links--tos {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.9rem;
+    padding: 0.8rem 0 0.35rem;
+  }
+
+  .profile-link {
+    align-self: center;
+  }
+}
