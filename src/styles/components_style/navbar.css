@@ -143,24 +143,35 @@
 
 @media (max-width: 820px) {
   .navbar-wrap {
+    position: sticky;
     padding: 0.85rem 0.85rem 0;
   }
 
   .navbar--tos {
-    flex-wrap: wrap;
+    position: relative;
     gap: 1rem;
   }
 
   .nav-toggle {
     display: inline-flex;
+    position: relative;
+    z-index: 31;
   }
 
   .nav-panel--tos {
     display: none;
-    width: 100%;
+    position: fixed;
+    top: calc(0.85rem + 5rem + 0.7rem);
+    left: 0.85rem;
+    right: 0.85rem;
+    z-index: 30;
     flex-direction: column;
     align-items: stretch;
-    padding-top: 0.5rem;
+    padding: 1rem 1rem 1.1rem;
+    border-radius: 1.25rem;
+    background: rgba(255, 248, 240, 0.98);
+    box-shadow: 0 18px 40px rgba(31, 20, 12, 0.18);
+    backdrop-filter: blur(10px);
   }
 
   .nav-panel--tos.is-open {

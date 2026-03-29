@@ -14,7 +14,6 @@ const navItems = [
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);

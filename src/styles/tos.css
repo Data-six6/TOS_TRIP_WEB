@@ -1,0 +1,217 @@
+@font-face {
+  font-family: "PaperKuto";
+  src: url("../assets/PaperKuto-Regular.ttf");
+}
+
+.tos-page {
+  padding: 0.75rem 1.8rem 2rem;
+}
+
+.tos-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.tos-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.tos-feature-card {
+  position: relative;
+  min-height: 30.5rem;
+  border: 6px solid #fff;
+  border-radius: 2rem;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 14px 36px rgba(77, 46, 12, 0.18);
+}
+
+.tos-feature-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 28%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+.tos-feature-card__content {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+
+.tos-feature-card h2 {
+  margin: 0 0 0.45rem;
+  font-family: "Poppins", "Trebuchet MS", sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.2rem);
+  line-height: 0.95;
+}
+
+.tos-feature-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.tos-feature-card__location img {
+  width: 0.95rem;
+  height: 0.95rem;
+  filter: brightness(0) invert(1);
+}
+
+.tos-feature-card__button,
+.tos-quick-swipe,
+.tos-filter-pill {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tos-feature-card__button {
+  min-height: 2.9rem;
+  border-radius: 999px;
+  background: #fffaf8;
+  color: #25160b;
+  font-weight: 800;
+}
+
+.tos-quick-swipe {
+  min-height: 3.35rem;
+  border-radius: 1.15rem;
+  background: #6d4b18;
+  color: #fff;
+  font-family: "Poppins", "Trebuchet MS", sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 14px 28px rgba(83, 53, 18, 0.22);
+}
+
+.tos-explore h1 {
+  font-weight: bold;
+  margin: 0 0 0.7rem;
+  font-family: "Poppins", "Trebuchet MS", sans-serif;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 0.95;
+  color: #17120d;
+}
+
+.tos-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.tos-filter-pill {
+  min-width: 7.8rem;
+  min-height: 2rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: #6d4b18;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.tos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tos-spot-card {
+  position: relative;
+  min-height: 8.8rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 12px 24px rgba(71, 48, 21, 0.18);
+}
+
+.tos-spot-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.78) 100%);
+}
+
+.tos-spot-card__overlay {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 0.65rem 0.65rem;
+  color: #fff;
+}
+
+.tos-spot-card__text h2 {
+  margin: 0;
+  font-family: "Poppins", "Trebuchet MS", sans-serif;
+  font-size: 1.8rem;
+  line-height: 0.88;
+}
+
+.tos-spot-card__text p {
+  margin: 0.1rem 0 0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.tos-spot-card__add {
+  flex: 0 0 auto;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #18110c;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+  .tos-layout {
+    grid-template-columns: 290px minmax(0, 1fr);
+  }
+
+  .tos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .tos-page {
+    padding: 0.5rem 0.85rem 1.5rem;
+  }
+
+  .tos-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tos-feature-card {
+    min-height: 25rem;
+  }
+
+  .tos-grid {
+    grid-template-columns: 1fr;
+  }
+}
