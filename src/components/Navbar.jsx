@@ -13,10 +13,32 @@ const navItems = [
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
+
+  useEffect(() => {
+    const syncUser = () => {
+      setCurrentUser(
+        JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
+      );
+    };
+
+    syncUser();
+    window.addEventListener("storage", syncUser);
+    return () => window.removeEventListener("storage", syncUser);
+  }, []);
+
   useEffect(() => {
     setIsOpen(false);
+    setCurrentUser(
+      JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
+    );
   }, [location.pathname]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("tosTripCurrentUser");
+    setCurrentUser(null);
+  };
 
   return (
     <header className="navbar-wrap">
@@ -53,12 +75,25 @@ function Navbar() {
             ))}
           </ul>
 
-          <Link to="/login" className="profile-link" aria-label="Profile">
-            <span className="profile-icon">
-              <span className="profile-icon__head" />
-              <span className="profile-icon__body" />
-            </span>
-          </Link>
+          {currentUser ? (
+            <div className="profile-link" aria-label="Current user">
+              <span className="profile-icon">
+                <span className="profile-icon__head" />
+                <span className="profile-icon__body" />
+              </span>
+              <span>{currentUser.username}</span>
+              <button type="button" className="profile-logout" onClick={handleLogout}>
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="profile-link" aria-label="Profile">
+              <span className="profile-icon">
+                <span className="profile-icon__head" />
+                <span className="profile-icon__body" />
+              </span>
+            </Link>
+          )}
         </div>
       </nav>
     </header>
