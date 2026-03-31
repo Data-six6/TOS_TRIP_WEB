@@ -129,6 +129,8 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+  max-height: 500px;   /* 👈 IMPORTANT */
+  overflow-y: auto;    /* 👈 enable scroll */
 }
 
 .tos-spot-card {
