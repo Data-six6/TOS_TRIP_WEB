@@ -1,5 +1,7 @@
 import pin from "../assets/Pin_svg.svg";
 import "../styles/tos.css";
+import exploreCards from "../data/exploreCards";
+import { useState, useEffect} from "react";
 
 const featuredSpot = {
   name: "Koh Rong Samloem",
@@ -10,64 +12,42 @@ const featuredSpot = {
 
 const regions = ["Phnom Penh", "Koh Rong", "Siem Reap"];
 
-const exploreCards = [
-  {
-    title: "Tour Bus",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Night Cruise",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Killing Fields",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Bassac Lane",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Royal Palace",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "National Museum",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Wat Phnom",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Sunset Cruise",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Central Market",
-    location: "Phnom Penh City",
-    image:
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80",
-  },
-];
-
 function TOSPage() {
+  const loadCards = () => {
+    if (typeof localStorage === "undefined") return exploreCards;
+    const saved = localStorage.getItem("exploreCards");
+    if (!saved) return exploreCards;
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    } catch (err) {
+      console.warn("Invalid exploreCards in localStorage, using default", err);
+    }
+    return exploreCards;
+  };
+
+  const [cards, setCards] = useState(loadCards);
+
+  useEffect(() => {
+    localStorage.setItem("exploreCards", JSON.stringify(cards));
+  }, [cards]);
+
+  const addToPlan = (item) => {
+    const planKey = "savedPlan";
+    let plan = [];
+    try {
+      plan = JSON.parse(localStorage.getItem(planKey) || "[]");
+    } catch {
+      plan = [];
+    }
+
+    if (!plan.some((x) => x.title === item.title)) {
+      plan.push(item);
+      localStorage.setItem(planKey, JSON.stringify(plan));
+    }
+};
   return (
     <main className="tos-page">
       <section className="tos-layout">
@@ -84,8 +64,12 @@ function TOSPage() {
                   <span>{featuredSpot.location}</span>
                 </p>
               </div>
-
-              <button type="button" className="tos-feature-card__button">
+   
+              <button
+                type="button"
+                className="tos-feature-card__button"
+                onClick={() => addToPlan(featuredSpot)}
+              >
                 Add to plan
               </button>
             </div>
@@ -108,7 +92,7 @@ function TOSPage() {
           </div>
 
           <div className="tos-grid">
-            {exploreCards.map((card) => (
+            {cards.map((card) => (
               <article
                 key={card.title}
                 className="tos-spot-card"
@@ -124,6 +108,7 @@ function TOSPage() {
                     type="button"
                     className="tos-spot-card__add"
                     aria-label={`Add ${card.title} to plan`}
+                    onClick={() => addToPlan(card)}
                   >
                     +
                   </button>

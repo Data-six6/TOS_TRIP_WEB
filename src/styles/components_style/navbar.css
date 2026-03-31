@@ -8,6 +8,7 @@
   top: 0;
   z-index: 20;
   padding: 0.9rem 1.25rem 0;
+  backdrop-filter: blur(10px);
 }
 
 .navbar {
@@ -107,9 +108,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
+  gap: 0.6rem;
+  min-height: 3.2rem;
+  padding: 0 0.5rem;
   color: #111;
+  text-decoration: none;
 }
 
 .profile-icon {
@@ -117,6 +120,17 @@
   display: block;
   width: 1.9rem;
   height: 1.9rem;
+  flex: 0 0 auto;
+}
+
+.profile-logout {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  background: #111;
+  color: #fff8f0;
+  font-size: 0.85rem;
+  cursor: pointer;
 }
 
 .profile-icon__head {
@@ -187,5 +201,6 @@
 
   .profile-link {
     align-self: center;
+    flex-wrap: wrap;
   }
 }

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import mapImage from "../assets/CambodiaMap.svg";
 import logo from "../assets/LOGO.svg";
 import pin from "../assets/Pin_svg.svg";
@@ -6,10 +7,85 @@ import userProfile from "../assets/User_profile.svg";
 import "../styles/components_style/login.css";
 
 function Login({ isLoginPage }) {
+  const navigate = useNavigate();
   const title = isLoginPage ? "LOGIN" : "SIGN UP";
   const submitLabel = isLoginPage ? "Log In" : "Create";
   const switchLabel = isLoginPage ? "Create New Account" : "Got an Account?";
   const switchLink = isLoginPage ? "/signup" : "/login";
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    const username = formData.username.trim();
+    const email = formData.email.trim().toLowerCase();
+    const password = formData.password;
+
+    if (!username || !email || !password) {
+      setErrorMessage("Please fill in username, email, and password.");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (!isLoginPage) {
+      if (password !== formData.confirmPassword) {
+        setErrorMessage("Passwords do not match.");
+        return;
+      }
+
+      const savedUser = { username, email, password };
+      localStorage.setItem("tosTripRegisteredUser", JSON.stringify(savedUser));
+      localStorage.setItem(
+        "tosTripCurrentUser",
+        JSON.stringify({ username, email })
+      );
+      setSuccessMessage("Account created. You are now logged in.");
+      navigate("/");
+      return;
+    }
+
+    const storedUser = JSON.parse(
+      localStorage.getItem("tosTripRegisteredUser") || "null"
+    );
+
+    if (
+      !storedUser ||
+      storedUser.username !== username ||
+      storedUser.email !== email ||
+      storedUser.password !== password
+    ) {
+      setErrorMessage("Incorrect username, email, or password.");
+      return;
+    }
+
+    localStorage.setItem(
+      "tosTripCurrentUser",
+      JSON.stringify({ username, email })
+    );
+    setSuccessMessage("Login successful.");
+    navigate("/");
+  };
 
   return (
     <main className="auth-page">
@@ -28,22 +104,54 @@ function Login({ isLoginPage }) {
             <h1>{title}</h1>
           </div>
 
-          <form className="auth-form">
+          <form className="auth-form" onSubmit={handleSubmit}>
             <label className="auth-field">
               <span>Username</span>
-              <input type="text" name="username" />
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className="auth-field">
+              <span>Email</span>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
             </label>
 
             <label className="auth-field">
               <span>Password</span>
-              <input type="password" name="password" />
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
             </label>
 
             {!isLoginPage && (
               <label className="auth-field">
                 <span>Confirm Password</span>
-                <input type="password" name="confirmPassword" />
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                />
               </label>
+            )}
+
+            {errorMessage && <p className="auth-message">{errorMessage}</p>}
+            {successMessage && (
+              <p className="auth-message auth-message--success">
+                {successMessage}
+              </p>
             )}
 
             <div className="auth-actions">
