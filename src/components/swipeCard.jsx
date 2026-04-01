@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 import "../styles/components_style/swipecard.css";
 import buttonNext from "../assets/buttonNEXT.svg";
 import buttonPrev from "../assets/buttonPREV.svg";
@@ -34,10 +34,13 @@ const defaultCards = [
   },
 ];
 
-function SwipeVenture({ cards = defaultCards, onAddToPlan }) {
-  const [idx, setIdx] = useState(0);
+function SwipeVenture({ cards = defaultCards, onAddToPlan , startindex = 0 }) {
+  const [idx, setIdx] = useState(startindex);
   const prev = () => setIdx((i) => (i - 1 + cards.length) % cards.length);
   const next = () => setIdx((i) => (i + 1) % cards.length);
+  useEffect(() => {
+  console.log("startIndex received:", startindex); 
+}, [startindex]);
   const card = cards[idx];
   return (
     <div className="sv-wrap">

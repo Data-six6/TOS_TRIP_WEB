@@ -2,10 +2,15 @@ import pin from "../assets/Pin_svg.svg";
 import "../styles/tos.css";
 import exploreCards from "../data/exploreCards";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const regions = ["Phnom Penh", "Koh Rong", "Siem Reap"];
 
 function TOSPage({ cards = exploreCards }) {
+  const navigate = useNavigate();
+  const goToSwipe = (card) => {
+  const index = cards.findIndex((c) => c.title === card.title); 
+  navigate(`/swipe?start=${index}`);
+};
   const [featuredIndex] = useState(() =>
     Math.floor(Math.random() * cards.length)
   );
@@ -54,7 +59,7 @@ function TOSPage({ cards = exploreCards }) {
             </div>
           </article>
 
-          <button type="button" className="tos-quick-swipe">
+          <button type="button" className="tos-quick-swipe" onClick={() => goToSwipe(featuredSpot)}>
             Quick Swipe
           </button>
         </aside>
@@ -83,9 +88,10 @@ function TOSPage({ cards = exploreCards }) {
                 key={card.title}
                 className="tos-spot-card"
                 style={{ backgroundImage: `url(${card.image})` }}
+                
               >
                 <div className="tos-spot-card__overlay">
-                  <div className="tos-spot-card__text">
+                  <div className="tos-spot-card__text" onClick={() => goToSwipe(card)}>
                     <h2>{card.title}</h2>
                     <p>{card.location}</p>
                   </div>

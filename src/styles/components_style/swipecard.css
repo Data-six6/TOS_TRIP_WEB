@@ -13,6 +13,7 @@
   color: #1a1000;
   letter-spacing: -2px;
   margin-bottom: 20px;
+  font-family: 'PaperKuto';
 }
 
 /* ── Stage: arrows + card ── */
@@ -40,7 +41,8 @@
 }
 
 .sv-arrow:hover {
-  background: #c8841a;
+  opacity: 0.85;
+  scale: 1.25;
 }
 
 .sv-arrow svg {

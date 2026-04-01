@@ -3,8 +3,26 @@
   src: url("../assets/PaperKuto-Regular.ttf");
 }
 
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Page ── */
 .tos-page {
   padding: 0.75rem 1.8rem 2rem;
+  animation: fadeIn 0.4s ease forwards;
 }
 
 .tos-layout {
@@ -16,10 +34,12 @@
   margin: 0 auto;
 }
 
+/* ── Feature sidebar ── */
 .tos-feature {
   display: flex;
   flex-direction: column;
   gap: 0.95rem;
+  animation: fadeUp 0.5s ease forwards;
 }
 
 .tos-feature-card {
@@ -31,6 +51,12 @@
   background-position: center;
   background-size: cover;
   box-shadow: 0 14px 36px rgba(77, 46, 12, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tos-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(77, 46, 12, 0.26);
 }
 
 .tos-feature-card::after {
@@ -86,6 +112,16 @@
   background: #fffaf8;
   color: #25160b;
   font-weight: 800;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.tos-feature-card__button:hover {
+  background: #f0e0d0;
+  transform: scale(1.03);
+}
+
+.tos-feature-card__button:active {
+  transform: scale(0.97);
 }
 
 .tos-quick-swipe {
@@ -97,6 +133,22 @@
   font-size: 1.3rem;
   letter-spacing: 0.02em;
   box-shadow: 0 14px 28px rgba(83, 53, 18, 0.22);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.tos-quick-swipe:hover {
+  background: #8a5e1f;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(83, 53, 18, 0.3);
+}
+
+.tos-quick-swipe:active {
+  transform: scale(0.97);
+}
+
+/* ── Explore section ── */
+.tos-explore {
+  animation: fadeUp 0.5s ease 0.1s both;
 }
 
 .tos-explore h1 {
@@ -108,6 +160,7 @@
   color: #17120d;
 }
 
+/* ── Filter pills ── */
 .tos-filters {
   display: flex;
   flex-wrap: wrap;
@@ -123,16 +176,33 @@
   background: #6d4b18;
   color: #fff;
   font-size: 0.95rem;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
+.tos-filter-pill:hover {
+  background: #8a5e1f;
+  transform: translateY(-2px);
+}
+
+.tos-filter-pill:active {
+  transform: scale(0.93);
+}
+
+.tos-filter-pill.active {
+  background: #3d2508;
+  transform: scale(1.05);
+}
+
+/* ── Grid ── */
 .tos-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  max-height: 500px;   /* 👈 IMPORTANT */
-  overflow-y: auto;    /* 👈 enable scroll */
+  max-height: 500px;
+  overflow-y: auto;
 }
 
+/* ── Spot cards — staggered fade in ── */
 .tos-spot-card {
   position: relative;
   min-height: 8.8rem;
@@ -141,19 +211,61 @@
   background-position: center;
   background-size: cover;
   box-shadow: 0 12px 24px rgba(71, 48, 21, 0.18);
+  cursor: pointer;
+  opacity: 0;
+  animation: scaleIn 0.4s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.tos-spot-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(71, 48, 21, 0.28);
+}
+
+/* image zoom on hover */
+.tos-spot-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.tos-spot-card:hover::before {
+  transform: scale(1.06);
+}
+
+/* stagger delays */
+.tos-spot-card:nth-child(1)  { animation-delay: 0.05s; }
+.tos-spot-card:nth-child(2)  { animation-delay: 0.10s; }
+.tos-spot-card:nth-child(3)  { animation-delay: 0.15s; }
+.tos-spot-card:nth-child(4)  { animation-delay: 0.20s; }
+.tos-spot-card:nth-child(5)  { animation-delay: 0.25s; }
+.tos-spot-card:nth-child(6)  { animation-delay: 0.30s; }
+.tos-spot-card:nth-child(7)  { animation-delay: 0.35s; }
+.tos-spot-card:nth-child(8)  { animation-delay: 0.40s; }
+.tos-spot-card:nth-child(9)  { animation-delay: 0.45s; }
+.tos-spot-card:nth-child(10) { animation-delay: 0.50s; }
+.tos-spot-card:nth-child(11) { animation-delay: 0.55s; }
+.tos-spot-card:nth-child(12) { animation-delay: 0.60s; }
+.tos-spot-card:nth-child(13) { animation-delay: 0.65s; }
+.tos-spot-card:nth-child(14) { animation-delay: 0.70s; }
 
 .tos-spot-card::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.78) 100%);
+  z-index: 1;
 }
 
 .tos-spot-card__overlay {
   position: absolute;
   inset: auto 0 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -178,18 +290,33 @@
 
 .tos-spot-card__add {
   flex: 0 0 auto;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2rem;
+  height: 2rem;
   border: 0;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border-radius: 50%;
   background: #fff;
   color: #18110c;
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
 }
 
+.tos-spot-card__add:hover {
+  background: #f5c97a;
+  transform: scale(1.15) rotate(90deg);
+}
+
+.tos-spot-card__add:active {
+  transform: scale(0.9);
+}
+
+/* ── Responsive ── */
 @media (max-width: 1100px) {
   .tos-layout {
     grid-template-columns: 290px minmax(0, 1fr);
