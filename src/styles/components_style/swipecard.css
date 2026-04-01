@@ -1,0 +1,258 @@
+/* swipeVenture.css */
+
+.sv-wrap {
+  background: #f5e6c8;
+  padding: 24px 0 32px;
+  font-family: inherit;
+}
+
+.sv-title {
+  text-align: center;
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: 900;
+  color: #1a1000;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+/* ── Stage: arrows + card ── */
+.sv-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 12px;
+}
+
+/* ── Arrow buttons ── */
+.sv-arrow {
+  background: #e8a84a;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.sv-arrow:hover {
+  background: #c8841a;
+}
+
+.sv-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Card ── */
+.sv-card {
+  background: #e8a84a;
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  flex-shrink: 1;
+}
+
+/* ── Image ── */
+.sv-img-wrap {
+  position: relative;
+}
+
+.sv-img-wrap img {
+  width: 100%;
+  height: clamp(180px, 28vw, 260px);
+  object-fit: cover;
+  display: block;
+}
+
+.sv-img-title {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.5px;
+}
+
+/* ── Body ── */
+.sv-body {
+  padding: 16px 20px 20px;
+}
+
+.sv-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+/* ── Description ── */
+.sv-desc-col {
+  flex: 1;
+}
+
+.sv-desc-label {
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 800;
+  color: #1a1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.sv-desc-icon {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sv-desc-text {
+  font-size: clamp(12px, 1.4vw, 14px);
+  color: #2a1a00;
+  line-height: 1.55;
+  text-align: justify;
+}
+
+/* ── Location ── */
+.sv-loc-col {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.sv-loc-icon {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2px;
+}
+
+
+
+.sv-loc-label {
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 800;
+  color: #1a1000;
+  display: block;
+}
+
+.sv-loc-link {
+  font-size: clamp(11px, 1.3vw, 14px);
+  color: #0055bb;
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── Footer ── */
+.sv-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.sv-rating {
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: 800;
+  color: #1a1000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sv-star {
+  color: #f5a300;
+  font-size: 18px;
+}
+
+.sv-btn {
+  background: #2a1a00;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: clamp(8px, 1.2vw, 11px) clamp(18px, 3vw, 28px);
+  font-size: clamp(12px, 1.3vw, 14px);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease;
+}
+
+.sv-btn:hover {
+  background: #4a3010;
+}
+
+/* ── Dots ── */
+.sv-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sv-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8a060;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  padding: 0;
+}
+
+.sv-dot.active {
+  background: #2a1a00;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .sv-info-row {
+    flex-direction: column;
+  }
+
+  .sv-loc-col {
+    text-align: left;
+    min-width: unset;
+    width: 100%;
+  }
+
+  .sv-loc-icon {
+    justify-content: flex-start;
+  }
+
+  .sv-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sv-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sv-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}

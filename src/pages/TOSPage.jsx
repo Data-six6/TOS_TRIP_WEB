@@ -1,53 +1,33 @@
 import pin from "../assets/Pin_svg.svg";
 import "../styles/tos.css";
 import exploreCards from "../data/exploreCards";
-import { useState, useEffect} from "react";
-
-const featuredSpot = {
-  name: "Koh Rong Samloem",
-  location: "Koh Rong",
-  image:
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
-};
+import { useState } from "react";
 
 const regions = ["Phnom Penh", "Koh Rong", "Siem Reap"];
 
-function TOSPage() {
-  const loadCards = () => {
-    if (typeof localStorage === "undefined") return exploreCards;
-    const saved = localStorage.getItem("exploreCards");
-    if (!saved) return exploreCards;
+function TOSPage({ cards = exploreCards }) {
+  const [featuredIndex] = useState(() =>
+    Math.floor(Math.random() * cards.length)
+  );
+  const [activeRegion, setActiveRegion] = useState(null);
+
+  const featuredSpot = cards[featuredIndex];
+
+  const filteredCards = activeRegion
+    ? cards.filter((c) => c.location.includes(activeRegion))
+    : cards;
+  const addToPlan = (item) => {
     try {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+      const plan = JSON.parse(localStorage.getItem("savedPlan") || "[]");
+      if (!plan.some((x) => x.title === item.title)) {
+        plan.push(item);
+        localStorage.setItem("savedPlan", JSON.stringify(plan));
       }
-    } catch (err) {
-      console.warn("Invalid exploreCards in localStorage, using default", err);
+    } catch {
+      console.warn("Could not save to plan");
     }
-    return exploreCards;
   };
 
-  const [cards, setCards] = useState(loadCards);
-
-  useEffect(() => {
-    localStorage.setItem("exploreCards", JSON.stringify(cards));
-  }, [cards]);
-
-  const addToPlan = (item) => {
-    const planKey = "savedPlan";
-    let plan = [];
-    try {
-      plan = JSON.parse(localStorage.getItem(planKey) || "[]");
-    } catch {
-      plan = [];
-    }
-
-    if (!plan.some((x) => x.title === item.title)) {
-      plan.push(item);
-      localStorage.setItem(planKey, JSON.stringify(plan));
-    }
-};
   return (
     <main className="tos-page">
       <section className="tos-layout">
@@ -58,13 +38,12 @@ function TOSPage() {
           >
             <div className="tos-feature-card__content">
               <div>
-                <h2>{featuredSpot.name}</h2>
+                <h2>{featuredSpot.title}</h2>
                 <p className="tos-feature-card__location">
                   <img src={pin} alt="" aria-hidden="true" />
                   <span>{featuredSpot.location}</span>
                 </p>
               </div>
-   
               <button
                 type="button"
                 className="tos-feature-card__button"
@@ -85,14 +64,21 @@ function TOSPage() {
 
           <div className="tos-filters" aria-label="Explore regions">
             {regions.map((region) => (
-              <button key={region} type="button" className="tos-filter-pill">
+              <button
+                key={region}
+                type="button"
+                className={`tos-filter-pill ${activeRegion === region ? "active" : ""}`}
+                onClick={() =>
+                  setActiveRegion((prev) => (prev === region ? null : region))
+                }
+              >
                 {region}
               </button>
             ))}
           </div>
 
           <div className="tos-grid">
-            {cards.map((card) => (
+            {filteredCards.map((card) => (
               <article
                 key={card.title}
                 className="tos-spot-card"
@@ -103,7 +89,6 @@ function TOSPage() {
                     <h2>{card.title}</h2>
                     <p>{card.location}</p>
                   </div>
-
                   <button
                     type="button"
                     className="tos-spot-card__add"

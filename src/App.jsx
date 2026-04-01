@@ -11,8 +11,16 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import SwipePage from "./pages/SwipePage.jsx";
 import TOSPage from "./pages/TOSPage.jsx";
 import { Route, Routes } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import exploreCards from "./data/exploreCards.js";
 function App() {
+  const [cards, setCards] = useState(() => {
+    const saved = localStorage.getItem("exploreCards");
+    return saved ? JSON.parse(saved) : exploreCards;
+  });
+  useEffect(() => {
+    localStorage.setItem("exploreCards", JSON.stringify(cards));
+  }, [cards]);
   return (
     <div className="app-shell">
       <Navbar />
