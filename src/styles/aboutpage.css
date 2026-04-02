@@ -1,0 +1,152 @@
+.first-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 60px 120px;
+  margin-bottom: 40px;
+  gap: 40px;
+}
+
+.scream-img {
+  height: 320px;
+  z-index: 2;
+  margin-right: 40px;
+}
+
+.first-text {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  line-height: 1;
+}
+.first-text div:first-child {
+  font-size: 4rem;
+  font-family: 'kuto', sans-serif;
+  font-weight: 400;
+}
+
+.first-text div:last-child {
+  font-size: 8rem;
+  font-family: 'kuto', sans-serif;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.second-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 120px;
+  gap: 200px;
+}
+
+.tape-image {
+  height: 200px;        
+  flex-shrink: 0;       
+}
+
+.second-text h2 {
+  font-family: 'kuto', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 15px;
+   font-weight: 400;
+}
+
+.second-text p {
+  font-family: 'Poppins', sans-serif;
+  text-align: justify;
+  font-size: 1rem;
+  max-width: 400px; 
+  border-bottom: 2px solid #000; 
+  padding-bottom: 20px;
+}
+
+.third-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.story-image {
+    width: 100%;
+    max-width: 900px;
+}
+
+.fourth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 120px;
+  gap: 40px;
+}
+
+.meet-title {
+  font-family: 'kuto', sans-serif;
+  font-size: 2.5rem;
+}
+
+.team-cards {
+  display: flex;
+  gap: 120px;
+  justify-content: center;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.character-img {
+  height: 380px;
+  object-fit: contain;
+}
+
+.member-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.member-role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.fifth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 120px;
+  gap: 250px;
+}
+
+.bread {
+  height: 400px;
+}
+
+.tos-trip-note {
+  height: 400px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+  border-top: 2px solid #000;
+  margin-top: 40px;
+}
+
+.footer-logo {
+  height: 50px;
+}
+
+.footer-text {
+  font-family: 'kuto', sans-serif;
+  font-size: 0.9rem;
+}

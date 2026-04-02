@@ -1,60 +1,74 @@
-import mouth from '../assets/scream_image.svg'
-import hearUs from '../assets/Hear us.svg'
-import out from '../assets/OUT!!!.svg'
-import tape from '../assets/tape.svg'
-import ourStory from '../assets/our_story.svg'
-import menghong from '../assets/Por Menghong.svg'
-import chandyna from '../assets/hak chandyna.svg'
-import david from '../assets/Sun David.svg'
-import toast from '../assets/nutella.svg'
-import notes from '../assets/TosTrip_notes.svg'
-import '../styles/aboutus.css'
+import Navbar from '../components/Navbar'
+import '../styles/home.css'
+import '../styles/aboutpage.css'
+import scream_image from "../assets/scream_image.svg"
+import tape_image from "../assets/tape.svg"
+import our_story from "../assets/our_story.svg"
+import sun_david from '../assets/Sun David.svg'
+import hak_chandyna from '../assets/hak chandyna.svg'
+import por_menghong from '../assets/Por Menghong.svg'
+import tos_trip_note from "../assets/TosTrip_notes.svg"
+import tos_logo from "../assets/LOGO.svg"
+import nutella from "../assets/nutella.svg"
 function AboutPage() {
-  return (
-    <div className='body'>
-      <div className='intro'>
-        <img src={mouth} alt="mouth" />
-        <img src={hearUs} alt="hearUs" />
-        <img src={out} alt="out" />
-      </div>
-
-      <div className='about_us'>
-        <img src={tape} alt="tape" />
-        <h6>about us</h6>
-        <p>Our platform was created to make travel planning easier and more inspiring. We wanted to build a space where travelers can discover destinations across Cambodia and organize their ideas in a simple and visual way. By combining exploration and planning, we hope to help people experience the beauty, culture, and hidden gems of the country.</p>
-      </div>
-
-      <div className='ourStory'>
-        <img src={ourStory} alt="ourStory" />
-      </div>
-
-      <div className='meet_our_team'>
-        <div className='hong_card'>
-          <img src={menghong} alt="menghong" />
-          <h6>Por Menghong</h6>
-          <p>Project Developer</p>
+    return (
+    <>
+    <main>
+        <div className='first-page'>
+            <img src={scream_image} className='scream-img'/>
+            <div className='first-text'>
+                <div>Hear us</div>
+                <div>OUT!!!</div>
+            </div>
         </div>
-        <div className='dyna_card'>
-          <img src={chandyna} alt="chandyna" />
-          <h6>hak chandyna</h6>
-          <p>UI/UX Designer</p>
+        <div className='second-page'>
+            <img src={tape_image} className='tape-image'/>
+            <div className='second-text'>
+                <h2>About Us</h2>
+                <p>Our platform was created to make travel planning easier and 
+                more inspiring. We wanted to build a space where travelers can 
+                discover destinations across Cambodia and organize their ideas 
+                in a simple and visual way...</p>
+            </div>
         </div>
-        <div className='david_card'>
-          <img src={david} alt="david" />
-          <h6>Sun David</h6>
-          <p>Content Researcher</p>
+        <div className='third-image'>
+            <img src={our_story} className='story-image'/>
         </div>
-      </div>
+        <div className='fourth-page'>
+            <h2 className='meet-title'>MEET OUR TEAM</h2>
 
-      <div className='our_notes'>
-        <img src={toast} alt="toast" />
-        <img src={notes} alt="notes" />
-      </div>
+            <div className='team-cards'>
+                <div className='team-card'>
+                    <img src={por_menghong} className='character-img'/>
+                    <p className='member-name'>Por Menghong</p>
+                    <p className='member-role'>Project Developer</p>
+                </div>
 
-    </div>
-  );
+                <div className='team-card'>
+                    <img src={hak_chandyna} className='character-img'/>
+                    <p className='member-name'>Hak Chandyna</p>
+                    <p className='member-role'>UI/UX Designer</p>
+                </div>
 
-
+                <div className='team-card'>
+                    <img src={sun_david} className='character-img'/>
+                    <p className='member-name'>Sun David</p>
+                    <p className='member-role'>Content Researcher</p>
+                </div>
+            </div>
+        </div>
+        <div className='fifth-page'>
+            <img src={nutella} className='bread'></img>
+            <img src={tos_trip_note} className='tos-trip-note'/>
+        </div>
+    </main>
+    <footer className='footer'>
+        <img src={tos_logo} className='footer-logo'/>
+        <p className='footer-text'>© 2025 TOSTrip. Made with ❤️ in Cambodia.</p>
+    </footer>
+    </>
+        
+    )
 }
 
-export default AboutPage;
+export default AboutPage
