@@ -6,26 +6,27 @@ import desc from "../assets/describetionSIGN.svg";
 import location from "../assets/locationSIGN.svg";
 import exploreCards from "../data/exploreCards";
 
-function SwipeVenture({ cards = exploreCards, onAddToPlan , startIndex = 0 }) {
+function SwipeVenture({ cards = exploreCards, onAddToPlan, startIndex = 0 }) {
   const [idx, setIdx] = useState(startIndex);
-  const prev = () => setIdx((i) => (i - 1 + cards.length) % cards.length);
-  const next = () => setIdx((i) => (i + 1) % cards.length);
+
   useEffect(() => {
     setIdx(startIndex);
-  console.log("startIndex received:", startIndex); 
-}, [startIndex]);
+  }, [startIndex]);
+
+  const prev = () => setIdx((i) => (i - 1 + cards.length) % cards.length);
+  const next = () => setIdx((i) => (i + 1) % cards.length);
+
   const card = cards[idx];
-  if (!card) return <div className="sv-wrap"><p className="sv-title">No cards available</p></div>;
+  if (!card) return null;
+
   return (
     <div className="sv-wrap">
       <h1 className="sv-title">SwipeVenture</h1>
       <div className="sv-stage">
-        {/* Prev arrow */}
         <button className="sv-arrow" type="button" onClick={prev} aria-label="Previous">
-         <img src={buttonPrev} alt="Previous" />
+          <img src={buttonPrev} alt="Previous" />
         </button>
 
-        {/* Card */}
         <div className="sv-card">
           <div className="sv-img-wrap">
             <img src={card.image} alt={card.title} />
@@ -34,14 +35,13 @@ function SwipeVenture({ cards = exploreCards, onAddToPlan , startIndex = 0 }) {
 
           <div className="sv-body">
             <div className="sv-info-row">
-              {/* Description */}
               <div className="sv-desc-col">
                 <div className="sv-desc-label">
-                  Description  <img src={desc} alt="Description" className="sv-desc-icon" />
+                  Description <img src={desc} alt="Description" className="sv-desc-icon" />
                 </div>
                 <p className="sv-desc-text">{card.description}</p>
               </div>
-              {/* Location */}
+
               <div className="sv-loc-col">
                 <div className="sv-loc-icon">
                   <img src={location} alt="Location" />
@@ -51,7 +51,6 @@ function SwipeVenture({ cards = exploreCards, onAddToPlan , startIndex = 0 }) {
               </div>
             </div>
 
-            {/* Footer */}
             <div className="sv-footer">
               <div className="sv-rating">
                 Rating: {card.rating.toFixed(1)}{" "}
@@ -60,9 +59,7 @@ function SwipeVenture({ cards = exploreCards, onAddToPlan , startIndex = 0 }) {
               <button
                 type="button"
                 className="sv-btn"
-                onClick={() => { if (onAddToPlan) {
-                      onAddToPlan(card);
-                    }}}
+                onClick={() => onAddToPlan?.(card)}
               >
                 Add To Wishlist
               </button>
@@ -70,13 +67,11 @@ function SwipeVenture({ cards = exploreCards, onAddToPlan , startIndex = 0 }) {
           </div>
         </div>
 
-        {/* Next arrow */}
         <button className="sv-arrow" type="button" onClick={next} aria-label="Next">
           <img src={buttonNext} alt="Next" />
         </button>
       </div>
 
-      {/* Dots */}
       <div className="sv-dots">
         {cards.map((_, i) => (
           <button
