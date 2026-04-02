@@ -1,4 +1,4 @@
-import mouth from '..assets/scream_image.svg'
+import mouth from '../assets/scream_image.svg'
 import hearUs from '../assets/Hear us.svg'
 import out from '../assets/OUT!!!.svg'
 import tape from '../assets/tape.svg'
