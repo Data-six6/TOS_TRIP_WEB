@@ -2,7 +2,14 @@
   font-family: "PaperKuto";
   src: url("../../assets/PaperKuto-Regular.ttf");
 }
-
+.nav-plan-btn{
+  font-family: "PaperKuto", "Trebuchet MS", sans-serif;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  background: #543A14;
+  color:#fff8f0;
+  font-size: 0.85rem;
+}
 .navbar-wrap {
   position: sticky;
   top: 0;

@@ -86,9 +86,11 @@ function SwipeVenture({ cards = defaultCards, onAddToPlan , startindex = 0 }) {
               <button
                 type="button"
                 className="sv-btn"
-                onClick={() => onAddToPlan?.(card)}
+                onClick={() => { if (onAddToPlan) {
+                      onAddToPlan(card);
+                    }}}
               >
-                Add To Plan
+                Add To Wishlist
               </button>
             </div>
           </div>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const regions = ["Phnom Penh", "Koh Rong", "Siem Reap"];
 
-function TOSPage({ cards = exploreCards }) {
+function TOSPage({ cards = exploreCards , addToPlan}) {
   const navigate = useNavigate();
   const goToSwipe = (card) => {
   const index = cards.findIndex((c) => c.title === card.title); 
@@ -21,18 +21,6 @@ function TOSPage({ cards = exploreCards }) {
   const filteredCards = activeRegion
     ? cards.filter((c) => c.location.includes(activeRegion))
     : cards;
-  const addToPlan = (item) => {
-    try {
-      const plan = JSON.parse(localStorage.getItem("savedPlan") || "[]");
-      if (!plan.some((x) => x.title === item.title)) {
-        plan.push(item);
-        localStorage.setItem("savedPlan", JSON.stringify(plan));
-      }
-    } catch {
-      console.warn("Could not save to plan");
-    }
-  };
-
   return (
     <main className="tos-page">
       <section className="tos-layout">
@@ -40,6 +28,7 @@ function TOSPage({ cards = exploreCards }) {
           <article
             className="tos-feature-card"
             style={{ backgroundImage: `url(${featuredSpot.image})` }}
+            onClick={()=>goToSwipe(featuredSpot)}
           >
             <div className="tos-feature-card__content">
               <div>
@@ -88,10 +77,10 @@ function TOSPage({ cards = exploreCards }) {
                 key={card.title}
                 className="tos-spot-card"
                 style={{ backgroundImage: `url(${card.image})` }}
-                
+                onClick={() => goToSwipe(card)}
               >
                 <div className="tos-spot-card__overlay">
-                  <div className="tos-spot-card__text" onClick={() => goToSwipe(card)}>
+                  <div className="tos-spot-card__text" >
                     <h2>{card.title}</h2>
                     <p>{card.location}</p>
                   </div>
@@ -99,7 +88,10 @@ function TOSPage({ cards = exploreCards }) {
                     type="button"
                     className="tos-spot-card__add"
                     aria-label={`Add ${card.title} to plan`}
-                    onClick={() => addToPlan(card)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      addToPlan(card);
+                    }}
                   >
                     +
                   </button>
