@@ -1,47 +1,21 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import "../styles/components_style/swipecard.css";
 import buttonNext from "../assets/buttonNEXT.svg";
 import buttonPrev from "../assets/buttonPREV.svg";
 import desc from "../assets/describetionSIGN.svg";
 import location from "../assets/locationSIGN.svg";
-const defaultCards = [
-  {
-    title: "Angkor Wat",
-    location: "Angkor Wat",
-    description:
-      "Angkor Wat, located near Siem Reap, Cambodia, is a vast temple complex built in the 12th century by King Suryavarman II. It is the world's largest religious structure, covering 400 acres, and represents the high point of Khmer architecture.",
-    rating: 4.4,
-    image:
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Lazy Beach",
-    location: "Koh Rong Samloem",
-    description:
-      "On the southwest coast of Koh Rong Sanloem, this hideaway is home to one of the most stunning beaches you'll find anywhere. There is only one place to stay here — the agreeably rustic resort that gave the beach its name.",
-    rating: 4.4,
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Phnom Penh Riverside",
-    location: "Sisowath Quay",
-    description:
-      "Cafes spill onto the promenade, river boats drift past, and street-food vendors come alive after dark. The perfect blend of history, culture, and contemporary Cambodian city life.",
-    rating: 4.3,
-    image:
-      "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=900&q=80",
-  },
-];
+import exploreCards from "../data/exploreCards";
 
-function SwipeVenture({ cards = defaultCards, onAddToPlan , startindex = 0 }) {
-  const [idx, setIdx] = useState(startindex);
+function SwipeVenture({ cards = exploreCards, onAddToPlan , startIndex = 0 }) {
+  const [idx, setIdx] = useState(startIndex);
   const prev = () => setIdx((i) => (i - 1 + cards.length) % cards.length);
   const next = () => setIdx((i) => (i + 1) % cards.length);
   useEffect(() => {
-  console.log("startIndex received:", startindex); 
-}, [startindex]);
+    setIdx(startIndex);
+  console.log("startIndex received:", startIndex); 
+}, [startIndex]);
   const card = cards[idx];
+  if (!card) return <div className="sv-wrap"><p className="sv-title">No cards available</p></div>;
   return (
     <div className="sv-wrap">
       <h1 className="sv-title">SwipeVenture</h1>
