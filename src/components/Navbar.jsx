@@ -11,7 +11,7 @@ const navItems = [
   { to: "/swipe", label: "Swipe" },
 ];
 
-function Navbar({ planCount , planClick}) {
+function Navbar({ planClick}) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
@@ -96,7 +96,7 @@ function Navbar({ planCount , planClick}) {
           )}
         </div>
         <button onClick={planClick} className="nav-plan-btn">
-        Wishlist {planCount > 0 && <span className="nav-badge">{planCount}</span>}
+        Wishlist 
       </button>
       </nav>
     </header>

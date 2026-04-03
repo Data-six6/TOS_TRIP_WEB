@@ -1,0 +1,127 @@
+[33mcommit 8702ebba89c3478af6994324183b9a8afc4bd16a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/modify_swipe[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmodify_swipe[m[33m)[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Thu Apr 2 14:51:31 2026 +0700
+
+    make swipe clean code
+
+[33mcommit cc18d9938f98b5ed0a80493f01e96c1734fee324[m
+Merge: 19f79f0 d90996d
+Author: Por Menghong <menghong.por@student.cadt.edu.kh>
+Date:   Thu Apr 2 14:43:39 2026 +0700
+
+    Merge pull request #2 from Data-six6/modify_nav
+    
+    Merger modify_nav
+
+[33mcommit d90996d92323fb7ef3ecb683115067fa78f80101[m[33m ([m[1;31morigin/modify_nav[m[33m, [m[1;32mmodify_nav[m[33m)[m
+Merge: e0d7bbf 19f79f0
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Thu Apr 2 14:32:49 2026 +0700
+
+    merge main into modify_nav and resolve conflicts
+
+[33mcommit e0d7bbf7681a8991cbba0c70c8e314c3f4022615[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Thu Apr 2 13:50:30 2026 +0700
+
+    modify nav and add wishlist
+
+[33mcommit 19f79f0db8bdab4560ac75e858d74d9f76392bae[m
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Thu Apr 2 13:36:53 2026 +0700
+
+    finished about us skeleton
+
+[33mcommit 96469b72d818a093ec4e3f790a0d5e60b45895a1[m
+Merge: 72b8202 01e7b96
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Thu Apr 2 02:47:41 2026 +0700
+
+    Merge branch 'main' of https://github.com/Data-six6/TOS_TRIP_WEB
+
+[33mcommit 72b8202f813a8d0fbe1dcefd08ba6d0b0b459633[m
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Thu Apr 2 02:45:58 2026 +0700
+
+    Finished HomePage but not yet added footer
+
+[33mcommit 01e7b96bcc224d7ad64cb22bf1123cfed82bc75b[m
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Thu Apr 2 02:35:38 2026 +0700
+
+    Finished homePage but not yet add footer
+
+[33mcommit d5a499075d759585c946f14d16bcc38462149932[m
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Thu Mar 26 23:45:29 2026 +0700
+
+    added nav to home
+
+[33mcommit e1c3ccc2bb707c1e226d88537d4a3fe97e87f86d[m[33m ([m[1;31morigin/modify_nav_add_wish[m[33m, [m[1;31morigin/link_swipe_tos[m[33m, [m[1;32mmodify_nav_add_wish[m[33m, [m[1;32mlink_swipe_tos[m[33m)[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Wed Apr 1 23:28:21 2026 +0700
+
+    link swipe and tos
+
+[33mcommit d2e89fb870563a2f106c8f6855322dc0efb9d9f4[m[33m ([m[1;31morigin/change_tos_and_swipe[m[33m, [m[1;32mchange_tos_and_swipe[m[33m)[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Wed Apr 1 14:18:24 2026 +0700
+
+    change_tosand make swipe
+
+[33mcommit 533bf1ef26be4006d395692d0dec459e678be287[m
+Merge: 9e425a4 9cec258
+Author: Por Menghong <menghong.por@student.cadt.edu.kh>
+Date:   Tue Mar 31 22:55:23 2026 +0700
+
+    Merge pull request #1 from Data-six6/applyLogic_tos_and_change_nav
+    
+    Apply logic tos and change nav
+
+[33mcommit 9cec258a535af45714a2596ee9a951171ff2652e[m[33m ([m[1;31morigin/applyLogic_tos_and_change_nav[m[33m, [m[1;32mapplyLogic_tos_and_change_nav[m[33m)[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Tue Mar 31 22:51:07 2026 +0700
+
+     applyLogic_tos_and_change_nav
+
+[33mcommit 433e93be555d133a8d377b70883c02c7118031ff[m[33m ([m[1;31morigin/Nav_and_Login[m[33m, [m[1;32mNav_and_Login[m[33m)[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Sun Mar 29 15:08:59 2026 +0700
+
+    apply logic to nav and login
+
+[33mcommit 9e425a4bcfe87624b06ea1703b2c104c1da399d3[m[33m ([m[1;31morigin/tos_and_nav[m[33m, [m[1;32mtos_and_nav[m[33m)[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Sun Mar 29 09:11:35 2026 +0700
+
+    add tos and nav
+
+[33mcommit bd2c2b2823638f9a6c55e4c59a41c68917676136[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Thu Mar 26 23:31:48 2026 +0700
+
+    Connect pages routes and rebuild auth pages
+
+[33mcommit 427edf2c94e2e2768dd76da8cf93531ab8d14804[m
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Thu Mar 12 08:41:04 2026 +0700
+
+    edited homePage
+
+[33mcommit 8aeaf7d7d20a58590470ab372c39cb863959b09c[m
+Author: Dyyna_Chann <chandynahak@gmail.com>
+Date:   Mon Mar 9 23:10:43 2026 +0700
+
+    done export images home and about us page
+
+[33mcommit 65f7584d5a7a28cf54659b02b9a8764074d8cb92[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Fri Mar 6 11:06:21 2026 +0700
+
+    updatecode
+
+[33mcommit a498a361b2d17d42daf70453ccd1e475756d4820[m
+Author: Data-six6 <menghong009988@gmai.com>
+Date:   Fri Mar 6 10:41:53 2026 +0700
+
+    TOS TRIP
