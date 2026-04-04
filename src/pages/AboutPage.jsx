@@ -62,10 +62,6 @@ function AboutPage() {
             <img src={tos_trip_note} className='tos-trip-note'/>
         </div>
     </main>
-    <footer className='footer'>
-        <img src={tos_logo} className='footer-logo'/>
-        <p className='footer-text'>© 2025 TOSTrip. Made with ❤️ in Cambodia.</p>
-    </footer>
     </>
         
     )

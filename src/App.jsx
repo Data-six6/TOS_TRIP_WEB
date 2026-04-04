@@ -9,10 +9,11 @@ import PlannerPage from "./pages/PlannerPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import SwipePage from "./pages/SwipePage.jsx";
 import TOSPage from "./pages/TOSPage.jsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import exploreCards from "./data/exploreCards.js";
 import PlanDrawer from "./components/Alert.jsx";
+import Footer from "./components/Footer.jsx";
 function App() {
   const [cards, setCards] = useState(() => {
     const saved = localStorage.getItem("exploreCards");
@@ -67,6 +68,7 @@ function App() {
           plan={plan}
           onRemove={removeFromPlan}
         />
+      <Footer />
     </div>
   );
 }
