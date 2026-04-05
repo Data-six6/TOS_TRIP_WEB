@@ -12,6 +12,7 @@ function Login({ isLoginPage }) {
   const submitLabel = isLoginPage ? "Log In" : "Create";
   const switchLabel = isLoginPage ? "Create New Account" : "Got an Account?";
   const switchLink = isLoginPage ? "/signup" : "/login";
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -23,10 +24,7 @@ function Login({ isLoginPage }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((current) => ({
-      ...current,
-      [name]: value,
-    }));
+    setFormData((current) => ({ ...current, [name]: value }));
   };
 
   const handleSubmit = (event) => {
@@ -38,6 +36,7 @@ function Login({ isLoginPage }) {
     const email = formData.email.trim().toLowerCase();
     const password = formData.password;
 
+    // basic validation
     if (!username || !email || !password) {
       setErrorMessage("Please fill in username, email, and password.");
       return;
@@ -48,41 +47,58 @@ function Login({ isLoginPage }) {
       return;
     }
 
+    // ── SIGN UP ──
     if (!isLoginPage) {
       if (password !== formData.confirmPassword) {
         setErrorMessage("Passwords do not match.");
         return;
       }
 
-      const savedUser = { username, email, password };
-      localStorage.setItem("tosTripRegisteredUser", JSON.stringify(savedUser));
+      const users = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");
+
+      // block duplicate email
+      if (users.some((u) => u.email === email)) {
+        setErrorMessage("An account with this email already exists.");
+        return;
+      }
+
+      const newUser = {
+        id: Date.now(),
+        username,
+        email,
+        password,
+        plan: [],
+        createdAt: new Date().toISOString(),
+      };
+
+      users.push(newUser);
+      localStorage.setItem("tosTripUsers", JSON.stringify(users));
       localStorage.setItem(
         "tosTripCurrentUser",
-        JSON.stringify({ username, email })
+        JSON.stringify({ id: newUser.id, username, email })
       );
+
       setSuccessMessage("Account created. You are now logged in.");
       navigate("/");
       return;
     }
 
-    const storedUser = JSON.parse(
-      localStorage.getItem("tosTripRegisteredUser") || "null"
+    // ── LOGIN ──
+    const users = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");
+    const found = users.find(
+      (u) => u.email === email && u.password === password
     );
 
-    if (
-      !storedUser ||
-      storedUser.username !== username ||
-      storedUser.email !== email ||
-      storedUser.password !== password
-    ) {
-      setErrorMessage("Incorrect username, email, or password.");
+    if (!found) {
+      setErrorMessage("Incorrect email or password.");
       return;
     }
 
     localStorage.setItem(
       "tosTripCurrentUser",
-      JSON.stringify({ username, email })
+      JSON.stringify({ id: found.id, username: found.username, email: found.email })
     );
+
     setSuccessMessage("Login successful.");
     navigate("/");
   };
@@ -147,18 +163,17 @@ function Login({ isLoginPage }) {
               </label>
             )}
 
-            {errorMessage && <p className="auth-message">{errorMessage}</p>}
+            {errorMessage && (
+              <p className="auth-message auth-message--error">{errorMessage}</p>
+            )}
             {successMessage && (
-              <p className="auth-message auth-message--success">
-                {successMessage}
-              </p>
+              <p className="auth-message auth-message--success">{successMessage}</p>
             )}
 
             <div className="auth-actions">
               <button type="submit" className="auth-submit">
                 {submitLabel}
               </button>
-
               <Link to={switchLink} className="auth-switch">
                 {switchLabel}
               </Link>
