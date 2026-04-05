@@ -54,13 +54,12 @@ function App() {
         <Route path="/"        element={<HomePage />} />
         <Route path="/about"   element={<AboutPage />} />
         <Route path="/tos"     element={<TOSPage   cards={cards} addToPlan={addToPlan} />} />
-        <Route path="/board"   element={<BoardPage />} />
+        <Route path="/board"   element={<BoardPage plan={plan} onRemove={removeFromPlan} />} />
         <Route path="/swipe"   element={<SwipePage cards={cards} onAddToPlan={addToPlan} />} />
         <Route path="/planner" element={<PlannerPage />} />
         <Route path="/login"   element={<LoginPage />} />
         <Route path="/signup"  element={<SignUpPage />} />
         <Route path="*"        element={<NotFoundPage />} />   
-        <Route path="/trip" element={<BoardPage />} />
       </Routes>
       <PlanDrawer
           isOpen={drawerOpen}
