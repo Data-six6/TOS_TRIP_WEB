@@ -84,6 +84,20 @@ function Login({ isLoginPage }) {
     }
 
     // ── LOGIN ──
+    const ADMIN = {
+      email: "admin@tostrip.com",
+      password: "admin123",
+      username: "Admin",
+    };
+    if (email === ADMIN.email && password === ADMIN.password && username === ADMIN.username) {
+      localStorage.setItem(
+        "tosTripCurrentUser",
+        JSON.stringify({ id:"admin", username: ADMIN.username, email: ADMIN.email, role: "admin" })
+      );
+      setSuccessMessage("Login successful.");
+      navigate("/admin");
+      return;
+    }
     const users = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");
     const found = users.find(
       (u) => u.email === email && u.password === password

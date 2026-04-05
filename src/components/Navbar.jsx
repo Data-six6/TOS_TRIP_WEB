@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/LOGO.svg";
 import "../styles/components_style/navbar.css";
-
+import { useNavigate } from "react-router-dom";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
@@ -11,11 +11,19 @@ const navItems = [
   { to: "/swipe", label: "Swipe" },
 ];
 
+const adminNavItems = [
+  {to: "/admin/home", label:"Home"},
+  {to: "/admin/Dashboard", label:"Dashboard"},
+  { to: "/admin/users", label: "Users" },
+  { to: "/admin/destination", label: "Destinations" },
+  { to: "/admin/board", label: "Board" },
+];
+
 function Navbar({ planClick}) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const syncUser = () => {
       setCurrentUser(
@@ -39,7 +47,8 @@ function Navbar({ planClick}) {
     localStorage.removeItem("tosTripCurrentUser");
     setCurrentUser(null);
   };
-
+const isAdmin = currentUser?.role === "admin";
+const activeNavItems = isAdmin ? adminNavItems : navItems;
   return (
     <header className="navbar-wrap">
       <nav className="navbar navbar--tos">
@@ -61,7 +70,7 @@ function Navbar({ planClick}) {
 
         <div className={`nav-panel--tos ${isOpen ? "is-open" : ""}`}>
           <ul className="nav-links--tos">
-            {navItems.map((item) => (
+            {activeNavItems.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
@@ -95,9 +104,9 @@ function Navbar({ planClick}) {
             </Link>
           )}
         </div>
-        <button onClick={planClick} className="nav-plan-btn">
+        {!isAdmin && <button onClick={planClick} className="nav-plan-btn">
         Wishlist 
-      </button>
+      </button>}    
       </nav>
     </header>
   );
