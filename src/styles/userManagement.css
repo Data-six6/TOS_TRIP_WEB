@@ -1,0 +1,91 @@
+﻿@font-face {
+    font-family: "kuto";
+    src: url(../assets/PaperKuto-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+      
+    box-sizing: border-box;
+}
+body{
+    
+    font-family: "Poppins";
+    background-color: #FFF0DC;
+
+
+}
+.status_active{
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.status_deactivated{
+    color: #ff4d4d;
+    font-weight: bold;
+}
+.user_details{
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins";
+    justify-content: center;
+    align-items: center;
+    width: 393px;
+    height: 502px;
+    border-radius: 20px;
+    background: #543A14;
+    gap: 10px;
+    
+}
+.user_row{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.edit p{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #FFF0DC;
+}
+.user_details h1{
+    font-size: 60px;
+    color: #FFF0DC;
+}
+.user_details h6{
+    font-size: 20px;
+
+}
+.activate_button {
+    width: 304px;
+    height: 52px;
+    background-color: green;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    color: white;            
+    font-family: "Poppins";  
+    border: none;           
+    border-radius: 8px;      
+    cursor: pointer;
+    margin-bottom: 10px;         
+}
+
+.deactivate_button {
+    width: 304px;
+    height: 52px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+    color: white;
+    font-family: "Poppins";
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

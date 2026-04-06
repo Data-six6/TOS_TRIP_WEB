@@ -141,12 +141,14 @@ body{
 }
 .take_what_you_need { 
     grid-column: 1;
-    width: 500x;
+    width: 100%;
+    max-width: 500px;
     transform:translateX(-21.5%);
 }
 .ourMsg { 
     grid-column: 2; 
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     transform:translateY(-110%) translateX(-5%);
 }
 .why_tos_trip{
@@ -170,4 +172,68 @@ body{
 .body{
     display: grid;
     justify-items: center;
+}
+@media (max-width: 1024px){
+
+.paragraph{
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.paragraph img{
+    justify-self: center;
+}
+
+.imgs{
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.ourMsg{
+    transform: none;
+}
+
+.take_what_you_need{
+    transform: none;
+}
+
+.intro{
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.body{
+    grid-template-columns: 1fr;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+}
+@media (max-width: 600px){
+
+.label{
+    font-size: 32px;
+    grid-template-columns: 50px 1fr;
+}
+
+.label img{
+    width: 50px;
+    height: auto;
+}
+
+.paragraph p{
+    font-size: 16px;
+}
+
+.welcome button{
+    width: 220px;
+    height: 50px;
+    font-size: 18px;
+}
+
+.welcome{
+    margin-bottom: 40px;
+}
+
 }

@@ -1,0 +1,157 @@
+﻿@font-face {
+    font-family: "kuto";
+    src: url(../assets/PaperKuto-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+      
+    box-sizing: border-box;
+}
+body{
+    
+    font-family: "Poppins";
+    background-color: #FFF0DC;
+    
+
+}
+.body{
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+.welcomeadmin{
+    width: 100%;
+    max-width: 917px;
+    min-height: 189px;
+    border-radius: 38px;
+    background: #543A14;
+    display: flex;
+    margin-bottom: 20px;
+}
+.welcomeadmin h4{
+    margin: 50px;
+    align-content: center;
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 36.323px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.quickLabel{
+    margin-bottom: 35px;
+    display: flex;
+    justify-self: start;
+}
+.quickLabel h5{
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 25.535px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.user_management_folder,
+.destination_management_folder,
+.travel_board{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    gap: 10px;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+
+}
+.HomeDashboard{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.Dashboard_card{
+    width: 100%;
+    max-width: 366px;
+    min-height: 256px;
+    border-radius: 22px;
+    background: #543A14;
+    padding: 20px;
+}
+.Dashboard_card h2{
+    color: #FFF0DC;
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 127.5px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.Dashboard_card h6{
+    color: #FFF0DC;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 23.43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.user_management_folder img,
+.destination_management_folder img,
+.travel_board img {
+    transition: 0.3s ease;
+}
+.user_management_folder:hover img,
+.destination_management_folder:hover img,
+.travel_board:hover img {
+    filter: brightness(90%); 
+    transform: scale(1.05); 
+}
+
+@media (max-width: 1024px){
+
+    .body{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container{
+        justify-content: center;
+    }
+
+    .welcomeadmin{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 600px){
+
+    .body{
+        padding: 20px;
+    }
+
+    .Dashboard_card h2{
+        font-size: 70px;
+    }
+
+    .welcomeadmin h4{
+        font-size: 24px;
+        margin: 20px;
+    }
+
+    .container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

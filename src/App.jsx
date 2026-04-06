@@ -19,6 +19,7 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import Users from "./pages/admin/UserManagement.jsx";
 import Destination from "./pages/admin/Destination.jsx";
 import Board from "./pages/admin/TravelBoard.jsx";
+import HomeAdmin from "./pages/admin/HomeAdmin.jsx";
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
@@ -73,12 +74,12 @@ const isAdmin = currentUser?.email === "admin@tostrip.com";
           <Route path="/login"   element={<LoginPage />} />
           <Route path="/signup"  element={<SignUpPage />} />
 
-          <Route path="/admin/home"        element={isAdmin ? <Home />        : <Navigate to="/login" />} />
+          <Route path="/admin/home"        element={isAdmin ? <HomeAdmin />        : <Navigate to="/login" />} />
           <Route path="/admin/dashboard"   element={isAdmin ? <Dashboard />   : <Navigate to="/login" />} />
           <Route path="/admin/users"       element={isAdmin ? <Users />       : <Navigate to="/login" />} />
           <Route path="/admin/destination" element={isAdmin ? <Destination /> : <Navigate to="/login" />} />
           <Route path="/admin/board"       element={isAdmin ? <Board />       : <Navigate to="/login" />} />
-                    
+          <Route path="/admin" element={<Navigate to="/admin/home" />} />     
           <Route path="*"        element={<NotFoundPage />} />   
         </Routes>
 
