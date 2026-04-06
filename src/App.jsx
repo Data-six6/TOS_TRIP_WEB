@@ -51,8 +51,10 @@ function App() {
   const removeFromPlan = (item) => {
     setPlan((prev) => prev.filter((x) => x.title !== item.title));
   };
-  const currentUser = JSON.parse(localStorage.getItem("tosTripCurrentUser" || "null"));
-  const isAdmin = currentUser?.role==="admin";
+ const [currentUser, setCurrentUser] = useState(() =>
+  JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
+);
+const isAdmin = currentUser?.email === "admin@tostrip.com";
   return (
     <div className="app-shell">
       <Navbar planCount={plan.length} planClick={() => setDrawerOpen(true)} />
@@ -66,19 +68,12 @@ function App() {
           <Route path="/login"   element={<LoginPage />} />
           <Route path="/signup"  element={<SignUpPage />} />
 
-          {
-            isAdmin && (
-              <>
-                <Route path="/admin/home" element={<Home />} />
-                <Route path="/admin/dashboard" element={<Dashboard />} />
-                <Route path="/admin/users" element={<Users />} />
-                <Route path="/admin/destination" element={<Destination />} />
-                <Route path="/admin/board" element={<Board />} />
-              </>
-            )
-          }
-          
-
+          <Route path="/admin/home"        element={isAdmin ? <Home />        : <Navigate to="/login" />} />
+          <Route path="/admin/dashboard"   element={isAdmin ? <Dashboard />   : <Navigate to="/login" />} />
+          <Route path="/admin/users"       element={isAdmin ? <Users />       : <Navigate to="/login" />} />
+          <Route path="/admin/destination" element={isAdmin ? <Destination /> : <Navigate to="/login" />} />
+          <Route path="/admin/board"       element={isAdmin ? <Board />       : <Navigate to="/login" />} />
+                    
           <Route path="*"        element={<NotFoundPage />} />   
         </Routes>
         <PlanDrawer

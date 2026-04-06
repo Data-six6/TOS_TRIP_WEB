@@ -92,7 +92,7 @@ function Login({ isLoginPage }) {
     if (email === ADMIN.email && password === ADMIN.password && username === ADMIN.username) {
       localStorage.setItem(
         "tosTripCurrentUser",
-        JSON.stringify({ id:"admin", username: ADMIN.username, email: ADMIN.email, role: "admin" })
+        JSON.stringify({ id:"admin ", username: ADMIN.username, email: ADMIN.email, role: "admin" })
       );
       setSuccessMessage("Login successful.");
       navigate("/admin");
