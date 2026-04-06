@@ -9,7 +9,7 @@ import PlannerPage from "./pages/PlannerPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import SwipePage from "./pages/SwipePage.jsx";
 import TOSPage from "./pages/TOSPage.jsx";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import exploreCards from "./data/exploreCards.js";
 import PlanDrawer from "./components/Alert.jsx";
@@ -19,9 +19,9 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import Users from "./pages/admin/UserManagement.jsx";
 import Destination from "./pages/admin/Destination.jsx";
 import Board from "./pages/admin/TravelBoard.jsx";
-import ProtectedRoute from "./components/ProtectedRouted.jsx";
-import AdminRoute from "./components/Adminroute.jsx";
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
   const [cards, setCards] = useState(() => {
     const saved = localStorage.getItem("exploreCards");
     return saved ? JSON.parse(saved) : exploreCards;
@@ -59,7 +59,10 @@ function App() {
 const isAdmin = currentUser?.email === "admin@tostrip.com";
   return (
     <div className="app-shell">
+    {location.pathname !== '/login' && 
+     location.pathname !== '/signup' && (
       <Navbar planCount={plan.length} planClick={() => setDrawerOpen(true)} />
+    )}
       <Routes>
           <Route path="/"        element={<HomePage />} />
           <Route path="/about"   element={<AboutPage />} />
@@ -70,23 +73,29 @@ const isAdmin = currentUser?.email === "admin@tostrip.com";
           <Route path="/login"   element={<LoginPage />} />
           <Route path="/signup"  element={<SignUpPage />} />
 
-          <Route path="/admin/home"        element={ <AdminRoute> <Home/> </AdminRoute> } />
-          <Route path="/admin/dashboard"   element={ <AdminRoute> <Dashboard /> </AdminRoute> } />
-          <Route path="/admin/users"       element={ <AdminRoute> <Users /> </AdminRoute> } />
-          <Route path="/admin/destination" element={ <AdminRoute> <Destination /> </AdminRoute> } />
-          <Route path="/admin/board"       element={ <AdminRoute> <Board /> </AdminRoute> } />
+          <Route path="/admin/home"        element={isAdmin ? <Home />        : <Navigate to="/login" />} />
+          <Route path="/admin/dashboard"   element={isAdmin ? <Dashboard />   : <Navigate to="/login" />} />
+          <Route path="/admin/users"       element={isAdmin ? <Users />       : <Navigate to="/login" />} />
+          <Route path="/admin/destination" element={isAdmin ? <Destination /> : <Navigate to="/login" />} />
+          <Route path="/admin/board"       element={isAdmin ? <Board />       : <Navigate to="/login" />} />
+                    
           <Route path="*"        element={<NotFoundPage />} />   
         </Routes>
-        <ProtectedRoute>
+
+        {!isAdminRoute && (
           <PlanDrawer
-            isOpen={drawerOpen}
-            onClose={() => setDrawerOpen(false)}
-            plan={plan}
-            onRemove={removeFromPlan}
-          />
-        </ProtectedRoute>
-         
-        <Footer />
+              isOpen={drawerOpen}
+              onClose={() => setDrawerOpen(false)}
+              plan={plan}
+              onRemove={removeFromPlan}
+            />
+        )}
+
+        {!isAdminRoute &&
+         location.pathname !== '/login' &&
+         location.pathname !== '/signup' && (
+          <Footer />
+        )}
 
     </div>
   );
