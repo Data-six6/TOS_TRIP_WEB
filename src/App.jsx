@@ -19,6 +19,8 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import Users from "./pages/admin/UserManagement.jsx";
 import Destination from "./pages/admin/Destination.jsx";
 import Board from "./pages/admin/TravelBoard.jsx";
+import ProtectedRoute from "./components/ProtectedRouted.jsx";
+import AdminRoute from "./components/Adminroute.jsx";
 function App() {
   const [cards, setCards] = useState(() => {
     const saved = localStorage.getItem("exploreCards");
@@ -68,20 +70,22 @@ const isAdmin = currentUser?.email === "admin@tostrip.com";
           <Route path="/login"   element={<LoginPage />} />
           <Route path="/signup"  element={<SignUpPage />} />
 
-          <Route path="/admin/home"        element={isAdmin ? <Home />        : <Navigate to="/login" />} />
-          <Route path="/admin/dashboard"   element={isAdmin ? <Dashboard />   : <Navigate to="/login" />} />
-          <Route path="/admin/users"       element={isAdmin ? <Users />       : <Navigate to="/login" />} />
-          <Route path="/admin/destination" element={isAdmin ? <Destination /> : <Navigate to="/login" />} />
-          <Route path="/admin/board"       element={isAdmin ? <Board />       : <Navigate to="/login" />} />
-                    
+          <Route path="/admin/home"        element={ <AdminRoute> <Home/> </AdminRoute> } />
+          <Route path="/admin/dashboard"   element={ <AdminRoute> <Dashboard /> </AdminRoute> } />
+          <Route path="/admin/users"       element={ <AdminRoute> <Users /> </AdminRoute> } />
+          <Route path="/admin/destination" element={ <AdminRoute> <Destination /> </AdminRoute> } />
+          <Route path="/admin/board"       element={ <AdminRoute> <Board /> </AdminRoute> } />
           <Route path="*"        element={<NotFoundPage />} />   
         </Routes>
-        <PlanDrawer
+        <ProtectedRoute>
+          <PlanDrawer
             isOpen={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             plan={plan}
             onRemove={removeFromPlan}
           />
+        </ProtectedRoute>
+         
         <Footer />
 
     </div>

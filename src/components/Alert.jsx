@@ -1,8 +1,11 @@
 import "../styles/components_style/Alert.css";
-
 function PlanDrawer({ isOpen, onClose, plan, onRemove }) {
+  const [currentUser, setCurrentUser] = useState(() =>
+     JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
+  );
   return (
     <>
+
       {/* backdrop */}
       {isOpen && <div className="drawer-backdrop" onClick={onClose} />}
 
