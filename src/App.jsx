@@ -83,6 +83,7 @@ const isAdmin = currentUser?.email === "admin@tostrip.com";
             onRemove={removeFromPlan}
           />
         <Footer />
+
     </div>
   );
 }
