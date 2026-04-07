@@ -48,7 +48,7 @@
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #5a3e1b;
+  color: rgb(191, 189, 189);
   pointer-events: none;
 }
 
@@ -185,6 +185,13 @@
   outline-offset: 2px;
 }
 
+.theme-default .board-empty {
+  color: #5a3e1b; 
+}
+
+.theme-vision2 .board-empty {
+  color: #FFFFFF;
+}
 .deco-star    { top: 15%; left: 28%; width: 70px; }
 .deco-pocket  { top: 8%;  left: 60%; width: 80px; }
 .deco-ball    { top: 48%; left: 6%;  width: 55px; }
