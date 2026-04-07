@@ -2,19 +2,23 @@
 import "../../styles/adminHome.css";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import exploreCards from "../../data/exploreCards";
 function HomeAdmin (){
     const [totalUsers, setTotalUsers] = useState(0);
     const [totalDestinations, setTotalDestinations] = useState(0);
     const [totalAttractions, setTotalAttractions] = useState(0);
 
     useEffect(() => {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-        const destinations = JSON.parse(localStorage.getItem("destinations") || "[]");
-        const attractions = JSON.parse(localStorage.getItem("attractions") || "[]");
-
+        let users = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");
+        if (!Array.isArray(users)) users = [users]; 
         setTotalUsers(users.length);
-        setTotalDestinations(destinations.length);
+
+        setTotalDestinations(exploreCards.length);
+
+        const attractions = exploreCards.filter(place => place.rating >= 4 && place.rating <= 5);
         setTotalAttractions(attractions.length);
+
+        
   }, []);
   const navigate = useNavigate();
     return(

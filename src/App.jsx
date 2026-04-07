@@ -76,7 +76,7 @@ const isAdmin = currentUser?.email === "admin@tostrip.com";
 
           <Route path="/admin/home"        element={isAdmin ? <HomeAdmin />        : <Navigate to="/login" />} />
           <Route path="/admin/dashboard"   element={isAdmin ? <Dashboard />   : <Navigate to="/login" />} />
-          <Route path="/admin/users"       element={isAdmin ? <Users />       : <Navigate to="/login" />} />
+          <Route path="/admin/users"       element={isAdmin ? <UserManagement />       : <Navigate to="/login" />} />
           <Route path="/admin/destination" element={isAdmin ? <Destination /> : <Navigate to="/login" />} />
           <Route path="/admin/board"       element={isAdmin ? <Board />       : <Navigate to="/login" />} />
           <Route path="/admin" element={<Navigate to="/admin/home" />} />     
