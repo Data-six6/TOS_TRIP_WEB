@@ -13,13 +13,13 @@ const navItems = [
 
 const adminNavItems = [
   {to: "/admin/home", label:"Home"},
-  {to: "/admin/Dashboard", label:"Dashboard"},
+  {to: "/admin/dashboard", label:"Dashboard"},
   { to: "/admin/users", label: "Users" },
   { to: "/admin/destination", label: "Destinations" },
   { to: "/admin/board", label: "Board" },
 ];
 
-function Navbar({ planClick}) {
+function Navbar({ planClick }) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
@@ -52,7 +52,7 @@ const activeNavItems = isAdmin ? adminNavItems : navItems;
   return (
     <header className="navbar-wrap">
       <nav className="navbar navbar--tos">
-        <Link to="/" className="tos-brand" aria-label="TOS Trip home">
+        <Link to={isAdmin ? "/admin/home" : "/"} className="tos-brand" aria-label="TOS Trip home">
           <img src={logo} alt="TOS Trip logo" className="tos-brand__logo" />
         </Link>
 

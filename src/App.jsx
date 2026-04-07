@@ -14,7 +14,6 @@ import { useState, useEffect } from "react";
 import exploreCards from "./data/exploreCards.js";
 import PlanDrawer from "./components/Alert.jsx";
 import Footer from "./components/Footer.jsx";
-import Home from "./pages/HomePage.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import Users from "./pages/admin/UserManagement.jsx";
 import Destination from "./pages/admin/Destination.jsx";
@@ -42,7 +41,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("savedPlan", JSON.stringify(plan));
   }, [plan]);
-
+  
   const addToPlan = (item) => {
     setPlan((prev) => {
       if (prev.some((x) => x.title === item.title)) return prev;
@@ -58,11 +57,18 @@ function App() {
   JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
 );
 const isAdmin = currentUser?.email === "admin@tostrip.com";
+
+// update on every route change
+useEffect(() => {
+  setCurrentUser(
+    JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
+  );
+}, [location.pathname]);
   return (
     <div className="app-shell">
     {location.pathname !== '/login' && 
      location.pathname !== '/signup' && (
-      <Navbar planCount={plan.length} planClick={() => setDrawerOpen(true)} />
+      <Navbar  planClick={() => setDrawerOpen(true)}  />
     )}
       <Routes>
           <Route path="/"        element={<HomePage />} />
@@ -75,11 +81,12 @@ const isAdmin = currentUser?.email === "admin@tostrip.com";
           <Route path="/signup"  element={<SignUpPage />} />
 
           <Route path="/admin/home"        element={isAdmin ? <HomeAdmin />        : <Navigate to="/login" />} />
+
           <Route path="/admin/dashboard"   element={isAdmin ? <Dashboard />   : <Navigate to="/login" />} />
           <Route path="/admin/users"       element={isAdmin ? <Users/>       : <Navigate to="/login" />} />
           <Route path="/admin/destination" element={isAdmin ? <Destination /> : <Navigate to="/login" />} />
           <Route path="/admin/board"       element={isAdmin ? <Board />       : <Navigate to="/login" />} />
-          <Route path="/admin" element={<Navigate to="/admin/home" />} />     
+
           <Route path="*"        element={<NotFoundPage />} />   
         </Routes>
 

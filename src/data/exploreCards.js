@@ -8,6 +8,7 @@ const exploreCards = [
     rating: 4.1,
     image:
       "https://images.unsplash.com/photo-1581417478175-a9ef18f210c2?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Olympic Stadium",
@@ -17,6 +18,7 @@ const exploreCards = [
     rating: 4.3,
     image:
       "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Chroy Changvar Bridge View",
@@ -26,6 +28,7 @@ const exploreCards = [
     rating: 4.4,
     image:
       "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
 
   // --- Siem Reap ---
@@ -37,6 +40,7 @@ const exploreCards = [
     rating: 4.9,
     image:
       "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Pub Street Nightlife",
@@ -46,6 +50,7 @@ const exploreCards = [
     rating: 4.2,
     image:
       "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Tonle Sap Floating Village",
@@ -55,6 +60,7 @@ const exploreCards = [
     rating: 4.5,
     image:
       "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
 
   // --- Islands ---
@@ -66,6 +72,7 @@ const exploreCards = [
     rating: 4.7,
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Bioluminescent Plankton",
@@ -75,6 +82,7 @@ const exploreCards = [
     rating: 4.8,
     image:
       "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
 
   // --- Adventure ---
@@ -86,6 +94,7 @@ const exploreCards = [
     rating: 4.6,
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Waterfall Camping",
@@ -95,6 +104,7 @@ const exploreCards = [
     rating: 4.6,
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
 
   // --- Culture ---
@@ -106,6 +116,7 @@ const exploreCards = [
     rating: 4.7,
     image:
       "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Local Village Experience",
@@ -115,6 +126,7 @@ const exploreCards = [
     rating: 4.5,
     image:
       "https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
 
   // --- Unique experiences ---
@@ -126,6 +138,7 @@ const exploreCards = [
     rating: 4.4,
     image:
       "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
   {
     title: "Pepper Farm Tour",
@@ -135,6 +148,7 @@ const exploreCards = [
     rating: 4.5,
     image:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80",
+    mapLink: `https://www.google.com/maps?q=`,
   },
 ];
 
