@@ -32,7 +32,7 @@ return (
     <div className="user_row">
       {users.map(user => (
         <div key={user.email} className="user_details">
-          <h1>{user.name}</h1>
+          <h1>{user.username}</h1>
           <h6 className={user.status === "active" ? "status_active" : "status_deactivated"}>
             Status: {user.status}</h6>
 
