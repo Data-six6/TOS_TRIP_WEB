@@ -64,7 +64,7 @@ function Destination() {
   const handleSave = () => {
     const updated = datacards.map((c) =>
       c.title === selectedCard.title ? { ...c, ...form, rating: parseFloat(form.rating) } : c
-    );
+    );4
     setDataCards(updated);
     localStorage.setItem("exploreCards", JSON.stringify(updated));
     handleClose();

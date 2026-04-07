@@ -46,6 +46,9 @@ function Navbar({ planClick }) {
   const handleLogout = () => {
     localStorage.removeItem("tosTripCurrentUser");
     setCurrentUser(null);
+    navigate("/");
+    window.location.reload(); //  force full reload
+
   };
 const isAdmin = currentUser?.role === "admin";
 const activeNavItems = isAdmin ? adminNavItems : navItems;
