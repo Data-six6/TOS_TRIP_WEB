@@ -2,16 +2,16 @@
 import "../../styles/userManagement.css";
 
 function UserManagement() {
-  // Single state to store all users
+ 
   const [users, setUsers] = useState([]);
 
-  // Load users from localStorage
+
   useEffect(() => {
-    const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    const savedUsers = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");
     setUsers(savedUsers);
   }, []);
 
-  // Change status for a specific user using email as unique key
+
   const changeStatus = (email, newStatus) => {
     const updatedUsers = users.map(user => {
       if (user.email === email) {
@@ -20,7 +20,7 @@ function UserManagement() {
       return user;
     });
     setUsers(updatedUsers);
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    localStorage.setItem("tosTripUsers", JSON.stringify(updatedUsers));
   };
 
 return (
