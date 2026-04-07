@@ -56,7 +56,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("savedPlan", JSON.stringify(plan));
   }, [plan]);
-
+  
   const addToPlan = (item) => {
     setPlan((prev) => {
       if (prev.some((x) => x.title === item.title)) return prev;
@@ -69,14 +69,20 @@ function App() {
     setPlan((prev) => prev.filter((x) => x.title !== item.title));
   };
 
-  const isAdmin = currentUser?.email === "admin@tostrip.com";
+const isAdmin = currentUser?.email === "admin@tostrip.com";
 
+// update on every route change
+useEffect(() => {
+  setCurrentUser(
+    JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
+  );
+}, [location.pathname]);
   return (
     <div className="app-shell">
-      {location.pathname !== '/login' &&
-       location.pathname !== '/signup' && (
-        <Navbar planCount={plan.length} planClick={() => setDrawerOpen(true)} />
-      )}
+    {location.pathname !== '/login' && 
+     location.pathname !== '/signup' && (
+      <Navbar  planClick={() => setDrawerOpen(true)}  />
+    )}
       <Routes>
         <Route path="/"        element={<HomePage />} />
         <Route path="/about"   element={<AboutPage />} />
