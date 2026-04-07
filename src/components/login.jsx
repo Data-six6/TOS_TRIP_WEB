@@ -96,7 +96,8 @@ function Login({ isLoginPage }) {
         JSON.stringify({ id:"admin ", username: ADMIN.username, email: ADMIN.email, role: "admin" })
       );
       setSuccessMessage("Login successful.");
-      navigate("/admin/dashboard");
+      navigate("/admin/home");
+      window.location.reload(); // to ensure admin navbar is shown
       return;
     }
     const users = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");
@@ -116,6 +117,7 @@ function Login({ isLoginPage }) {
 
     setSuccessMessage("Login successful.");
     navigate("/");
+
   };
 
   return (
