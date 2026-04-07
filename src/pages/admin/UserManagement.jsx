@@ -39,17 +39,11 @@ return (
           <div className="edit">
             <p>Change Status:</p>
 
-            <button
-              className="activate_button"
-              onClick={() => changeStatus(user.email, "active")}
-            >
+            <button className="activate_button" onClick={() => changeStatus(user.email, "active")}>
               Activate
             </button>
 
-            <button
-              className="deactivate_button"
-              onClick={() => changeStatus(user.email, "deactivated")}
-            >
+            <button className="deactivate_button" onClick={() => changeStatus(user.email, "deactivated")}>
               Deactivate
             </button>
           </div>
