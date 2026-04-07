@@ -68,6 +68,7 @@ function Login({ isLoginPage }) {
         email,
         password,
         plan: [],
+        status:"active",
         createdAt: new Date().toISOString(),
       };
 
