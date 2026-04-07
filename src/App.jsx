@@ -40,7 +40,6 @@ function App() {
     JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
   );
 
-  // ✅ This was missing — makes login actually work
   useEffect(() => {
     const syncUser = () => {
       setCurrentUser(JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null"));
@@ -86,12 +85,12 @@ useEffect(() => {
       <Routes>
         <Route path="/"        element={<HomePage />} />
         <Route path="/about"   element={<AboutPage />} />
-        <Route path="/tos"     element={<TOSPage cards={cards} addToPlan={addToPlan} />} />
-        <Route path="/board"   element={<BoardPage plan={plan} onRemove={removeFromPlan} />} />
-        <Route path="/swipe"   element={<SwipePage cards={cards} onAddToPlan={addToPlan} />} />
-        <Route path="/planner" element={<PlannerPage />} />
-        <Route path="/login"   element={<LoginPage />} />
-        <Route path="/signup"  element={<SignUpPage />} />
+        <Route path="/tos"     element={currentUser ? <TOSPage cards={cards} addToPlan={addToPlan} /> : <Navigate to="/login" />} />
+        <Route path="/board"   element={currentUser ? <BoardPage plan={plan} onRemove={removeFromPlan} /> : <Navigate to="/login" />} />
+        <Route path="/swipe"   element={currentUser ? <SwipePage cards={cards} onAddToPlan={addToPlan} /> : <Navigate to="/login" />} />
+        <Route path="/planner" element={currentUser ? <PlannerPage /> : <Navigate to="/login" />} />
+        <Route path="/login"   element={currentUser ? <Navigate to="/" /> : <LoginPage />} />
+        <Route path="/signup"  element={currentUser ? <Navigate to="/" /> : <SignUpPage />} />
 
 
         <Route path="/admin"             element={<Navigate to="/admin/home" />} />
@@ -105,7 +104,7 @@ useEffect(() => {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
-      {!isAdminRoute && (
+      {!currentUser && (
         <PlanDrawer
           isOpen={drawerOpen}
           onClose={() => setDrawerOpen(false)}
