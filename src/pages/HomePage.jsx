@@ -13,7 +13,7 @@ function HomePage() {
 
   const navigate = useNavigate();
   const goToTrip = () => {
-    navigate("/trip");
+    navigate("/tos");
   }
   return (
     <div className='mainBody'>
