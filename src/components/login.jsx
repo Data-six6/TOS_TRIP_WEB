@@ -95,7 +95,7 @@ function Login({ isLoginPage }) {
         JSON.stringify({ id:"admin ", username: ADMIN.username, email: ADMIN.email, role: "admin" })
       );
       setSuccessMessage("Login successful.");
-      navigate("/admin");
+      navigate("/admin/dashboard");
       return;
     }
     const users = JSON.parse(localStorage.getItem("tosTripUsers") || "[]");

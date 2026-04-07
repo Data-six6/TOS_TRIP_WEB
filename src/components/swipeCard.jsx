@@ -47,7 +47,17 @@ function SwipeVenture({ cards = exploreCards, onAddToPlan, startIndex = 0 }) {
                   <img src={location} alt="Location" />
                 </div>
                 <span className="sv-loc-label">Location</span>
-                <span className="sv-loc-link">{card.location}</span>
+                <a
+                    href={`https://www.google.com/maps?q=${encodeURIComponent(
+                      card.title + " " + card.location
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sv-loc-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                     {card.location}
+                  </a>
               </div>
             </div>
 
