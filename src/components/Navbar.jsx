@@ -24,18 +24,12 @@ function Navbar({ planClick }) {
   const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  useEffect(() => {
-    const syncUser = () => {
-      setCurrentUser(
-        JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null")
-      );
-    };
-
-    syncUser();
+    useEffect(() => {
+    const syncUser = () =>
+      setCurrentUser(JSON.parse(localStorage.getItem("tosTripCurrentUser") || "null"));
     window.addEventListener("storage", syncUser);
     return () => window.removeEventListener("storage", syncUser);
   }, []);
-
   useEffect(() => {
     setIsOpen(false);
     setCurrentUser(
@@ -50,7 +44,7 @@ function Navbar({ planClick }) {
     window.location.reload(); //  force full reload
 
   };
-const isAdmin = currentUser?.role === "admin";
+const isAdmin = currentUser?.email === "admin@tostrip.com";
 const activeNavItems = isAdmin ? adminNavItems : navItems;
   return (
     <header className="navbar-wrap">

@@ -22,7 +22,7 @@ function Destination() {
     if (!acc[key]) acc[key] = [];
     acc[key].push(item);
     return acc;
-  }, {});
+  }, {});  
 
   const locations = Object.keys(grouped);
 
@@ -148,8 +148,8 @@ function Destination() {
 
               <div className="dest-field-row">
                 <div className="dest-field">
-                  <label>Location</label>
-                  <input name="location" value={form.location || ""} onChange={handleChange} />
+                  <label>Map Link</label>
+                  <input name="location" value={form.mapLink || ""} onChange={handleChange} />
                 </div>
                 <div className="dest-field">
                   <label>Rating</label>
